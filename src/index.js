@@ -1,4 +1,5 @@
 const mapboxgl = require('mapbox-gl');
+const buildMarker = require('./marker');
 
 console.log('Hello from JavaScript');
 
@@ -12,9 +13,13 @@ const map = new mapboxgl.Map({
   style: 'mapbox://styles/mapbox/streets-v10', // mapbox has lots of different map styles available.
 });
 
-const markerFS = document.createElement('div');
-markerFS.style.width = '32px';
-markerFS.style.height = '39px';
-markerFS.style.backgroundImage = 'url(http://i.imgur.com/WbMOfMl.png)';
+const markerChicago = document.createElement('div');
+markerChicago.style.width = '32px';
+markerChicago.style.height = '39px';
+markerChicago.style.backgroundImage = 'url(http://i.imgur.com/WbMOfMl.png)';
 
-new mapboxgl.Marker(markerFS).setLngLat([-87.641, 41.895]).addTo(map);
+new mapboxgl.Marker(markerChicago).setLngLat([-87.641, 41.895]).addTo(map);
+
+const currentMarker = buildMarker('activity', [-74.009, 40.705]);
+currentMarker.addTo(map);
+
